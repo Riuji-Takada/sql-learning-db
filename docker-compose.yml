@@ -1,0 +1,21 @@
+services:
+  database:
+    image: mysql:8.0
+    container_name: learning-container
+    volumes:
+      - mysql-db-store:/var/lib/mysql
+      - ./logs:/var/log/mysql
+      - ./my.cnf/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./initdb:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootP@ssword
+      - MYSQL_DATABASE=sales_db
+      - MYSQL_USER=learningUser
+      - MYSQL_PASSWORD=learningP@ssword
+      - TZ=Asia/Tokyo
+    ports:
+      - 13306:3306
+    command: --innodb-use-native-aio=0
+
+volumes:
+  mysql-db-store:

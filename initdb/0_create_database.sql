@@ -1,0 +1,5 @@
+SET CHARSET utf8;
+
+CREATE DATABASE IF NOT EXISTS `school_db`;
+GRANT ALL ON `school_db`.* TO learningUser;
+FLUSH PRIVILEGES;
